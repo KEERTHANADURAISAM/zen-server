@@ -24,7 +24,7 @@ const querySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  dateFrom: {
+  From: {
     type: Date,
     required: true,
   },
