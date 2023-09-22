@@ -10,7 +10,7 @@ const Pusher = require("pusher");
 const Query = require("./createQuery");
 
 app.use(express.json());
-app.use(cors("http://localhost:3001"));
+app.use(cors("*"));
 
 // pusher configuration
 const pusher = new Pusher({
@@ -151,6 +151,25 @@ app.post("/create-query", async (req, res) => {
   } catch (error) {
     console.error("Error creating query:", error);
     res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.get("/all/queries", async (req, res) => {
+  try {
+    // Use Room.find() to fetch all rooms from the database
+    const findAllQuery = await Query.find();
+
+    // Handle the case where no rooms are found
+    if (!findAllQuery || findAllQuery.length === 0) {
+      return res.status(404).json({ error: "No Query found." });
+    }
+
+    // Send a JSON response with a 200 status code
+    res.status(200).json(findAllQuery);
+  } catch (error) {
+    console.error(error);
+    // Handle errors by sending a 500 status code and an error message
+    res.status(500).json({ error: "Server error" });
   }
 });
 
