@@ -140,7 +140,7 @@ app.post("/create-query", async (req, res) => {
       language,
       title,
       details,
-      dateFrom,
+      From,
       till,
     });
 
@@ -150,7 +150,7 @@ app.post("/create-query", async (req, res) => {
     res.status(201).json(savedQuery);
   } catch (error) {
     console.error("Error creating query:", error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error:message });
   }
 });
 
