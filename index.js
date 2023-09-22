@@ -150,7 +150,7 @@ app.post("/create-query", async (req, res) => {
     res.status(201).json(savedQuery);
   } catch (error) {
     console.error("Error creating query:", error);
-    res.status(500).json({ error:message });
+    res.status(500).json({ error:error.message });
   }
 });
 
