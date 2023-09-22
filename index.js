@@ -133,7 +133,7 @@ app.get("/messages/:id", async (req, res) => {
 
 app.post("/create-query", async (req, res) => {
   try {
-    const { category, language, title, details, dateFrom, till } = req.body;
+    const { category, language, title, details, From, till } = req.body;
 
     const newQuery = await Query.create({
       category,
