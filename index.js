@@ -13,14 +13,7 @@ app.use(express.json());
 app.use(cors("*"));
 
 // pusher configuration
-const pusher = new Pusher({
-  appId: "1672355",
-  key: "03e663ec229c6ffbcfe7",
-  secret: "b0fe7376fa493e09c0c5",
-  cluster: "ap2",
-  useTLS: true,
-});
-
+const newPusher = process.env.pusher;
 const dbUrl = process.env.DB;
 // db connection
 mongoose.connect(dbUrl);
