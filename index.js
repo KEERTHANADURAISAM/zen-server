@@ -18,7 +18,7 @@ const pusher = new Pusher({
   key: process.env.PUSHER_KEY,
   secret: process.env.PUSHER_SECRET, // Retrieve the secret from environment variables
   cluster: process.env.PUSHER_CLUSTER,
-  useTLS: process.env.PUSHER_USE_TLS === 'true'
+  useTLS: process.env.PUSHER_USE_TLS === "true",
 });
 
 const dbUrl = process.env.DB;
@@ -130,7 +130,7 @@ app.get("/messages/:id", async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
-
+// create
 app.post("/create-query", async (req, res) => {
   try {
     const { category, language, title, details, From, till } = req.body;
@@ -149,8 +149,8 @@ app.post("/create-query", async (req, res) => {
 
     res.status(201).json(savedQuery);
   } catch (error) {
-    console.error("Error creating query:", error);
-    res.status(500).json({ error:error.message });
+    console.error({ error: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 

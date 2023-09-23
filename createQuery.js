@@ -25,11 +25,11 @@ const querySchema = new mongoose.Schema({
     required: true,
   },
   From: {
-    type: Date,
+    type: String,
     required: true,
   },
   till: {
-    type: Date,
+    type: String,
     required: true,
   },
   // Add more dropdown fields as needed
